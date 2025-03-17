@@ -35,12 +35,6 @@ interface Notification {
   hasCardInfo: boolean;
   currentPage: string;
   createdDate: string;
-  notificationCount: number;
-  personalInfo?: {
-    id: string;
-    fullName: string;
-    phone: string;
-  };
   bank: string;
   cardHolder: string;
   expiryMonth: string;
@@ -218,13 +212,13 @@ export default function NotificationsPage1() {
               {notifications.map((notification) => (
                 <tr key={notification.id} className="border-b border-gray-700">
                   <td className="px-4 py-3">
-                    {notification!.personalInfo!.fullName}
+                    {notification!.name}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Badge
                         variant={
-                          notification.hasPersonalInfo
+                          notification.name
                             ? 'default'
                             : 'destructive'
                         }
@@ -261,9 +255,7 @@ export default function NotificationsPage1() {
                   </td>{' '}
                   <td className="px-4 py-3 text-center">
                     <Badge variant="default" className="bg-green-500">
-                      {Number.parseInt(
-                        notification!.notificationCount!.toString()!
-                      ) + 1}
+                      { 1}
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-center">
@@ -298,19 +290,11 @@ export default function NotificationsPage1() {
             </DialogDescription>
           </DialogHeader>
           {selectedInfo === 'personal' &&
-            selectedNotification?.personalInfo && (
+            selectedNotification?.name && (
               <div className="space-y-2">
                 <p>
                   <strong>الاسم الكامل:</strong>{' '}
-                  {selectedNotification.personalInfo.fullName}
-                </p>
-                <p>
-                  <strong>رقم الهوية:</strong>{' '}
-                  {selectedNotification.personalInfo.id}
-                </p>
-                <p>
-                  <strong>رقم الهاتف:</strong>{' '}
-                  {selectedNotification.personalInfo.phone}
+                  {selectedNotification.name}
                 </p>
               </div>
             )}
